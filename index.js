@@ -7,9 +7,12 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 // Account Routes
-app.post("/signup", (req, res) => {
+app.post("/login", (req, res) => {
     const userInfo = req.body;
     
+    if(userInfo.email === "HappyHolidays@MLH.io" && userInfo.pw === "123") {
+        res.sendStatus(200);
+    } else res.sendStatus(404);
 });
 
 // Data routes
