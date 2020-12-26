@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const cors = require('cors');
 const {db} = require("./db");
+const {encounters} = require("./definitelyNotStaticData/encounters");
+const {events} = require("./definitelyNotStaticData/events");
 
 app.use(cors());
 app.use(express.json());
@@ -18,7 +20,11 @@ app.post("/login", (req, res) => {
 
 // Data routes
 app.get("/getUserData", (req, res) => {
+    res.send(encounters);
+});
 
+app.get("/getEvents", (req, res) => {
+    res.send(events);
 });
 
 app.listen(19005, () => {console.log("Running!")})
